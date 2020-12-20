@@ -33,6 +33,7 @@ namespace TestNinja.MSUnitTests.Fundamentals
             Assert.ThrowsException<ArgumentNullException>(() => { _logger.Log(error); });
         }
 
+        //you can also use this to test a method that returns an exception
         //[TestMethod]
         //[DataRow(null)]
         //[DataRow(" ")]
@@ -42,5 +43,18 @@ namespace TestNinja.MSUnitTests.Fundamentals
         //{
         //    _logger.Log(error);
         //}
+
+
+        [TestMethod]
+        public void Log_ValidError_RaisesErrorLogedEvent()
+        {
+            var id = Guid.Empty;
+            _logger.ErrorLogged += (sender, args) => { id = args; };
+            _logger.Log("a");
+
+            Assert.AreNotEqual(id, Guid.Empty);
+        }
+
+
     }
 }
