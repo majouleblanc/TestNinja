@@ -78,7 +78,7 @@ namespace TestNinja.MSUnitTests.Fundamentals
         {
             var result = _math.GetOddNumbers(5);
             IEnumerable<int> list = new[] { 1, 3, 5 };
-            IList<int> orderedList = list.OrderByDescending(x => x).ToList();
+            IList<int> orderedList = list.OrderBy(x => x).ToList();
 
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Count() >= 0);

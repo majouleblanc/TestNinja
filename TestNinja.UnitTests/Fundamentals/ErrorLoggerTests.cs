@@ -7,7 +7,7 @@ using TestNinja.Fundamentals;
 namespace TestNinja.MSUnitTests.Fundamentals
 {
     [TestClass]
-    class ErrorLoggerTests
+    public class ErrorLoggerTests
     {
         private ErrorLogger _logger;
         [TestInitialize]
@@ -23,5 +23,24 @@ namespace TestNinja.MSUnitTests.Fundamentals
 
             Assert.AreEqual(_logger.LastError, "a");
         }
+
+        [TestMethod]
+        [DataRow(null)]
+        [DataRow(" ")]
+        [DataRow("")]
+        public void Log_InvalidError_ThrowsArgumentNullException(string error)
+        {
+            Assert.ThrowsException<ArgumentNullException>(() => { _logger.Log(error); });
+        }
+
+        //[TestMethod]
+        //[DataRow(null)]
+        //[DataRow(" ")]
+        //[DataRow("")]
+        //[ExpectedException(typeof(ArgumentNullException))]
+        //public void Log_InvalidError_ThrowsArgumentNullException(string error)
+        //{
+        //    _logger.Log(error);
+        //}
     }
 }
