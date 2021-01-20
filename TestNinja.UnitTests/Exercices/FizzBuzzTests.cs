@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Text;
 using TestNinja.Fundamentals;
 
-namespace TestNinja.MSUnitTests.Fundamentals
+namespace TestNinja.MSUnitTests.Exercices
+
 {
     [TestClass]
     public class FizzBuzzTests
